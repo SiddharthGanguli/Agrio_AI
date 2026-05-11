@@ -1,4 +1,4 @@
-from crop_recommendation.entity.entity import DataIngestionConfig
+from crop_recommendation.entity.entity import DataIngestionConfig,DataValidationConfig
 from pathlib import Path   
 import yaml
 import os 
@@ -31,4 +31,20 @@ class ConfigManager :
             test_dir = Path(ingestion.get("test_dir")),
             test_size = ingestion.get("test_size", 0.2),
             random_state = ingestion.get("random_state", 42)
+        )
+    
+    def get_data_validation_config(self) -> DataValidationConfig:
+
+        validation = self.config.get("data_validation")
+        if validation is None:
+            raise ValueError("data_validation section missing in config.yaml")
+
+        root_dir = Path(validation["root_dir"])
+        os.makedirs(root_dir, exist_ok=True)
+
+        return DataValidationConfig(
+            root_dir=root_dir,
+            validation_status_file=Path(validation["validation_status_file"]),
+            train_dir=Path(validation["train_dir"]),
+            schema_file=Path(validation["schema_file"]),
         )

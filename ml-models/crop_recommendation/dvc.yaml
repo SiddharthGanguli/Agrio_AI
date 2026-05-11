@@ -13,3 +13,16 @@ stages:
       - artifacts/data_ingestion/raw.csv
       - artifacts/data_ingestion/train.csv
       - artifacts/data_ingestion/test.csv
+
+
+  data_validation:
+    cmd: PYTHONPATH=src python src/crop_recommendation/pipelines/pipeline_02_data_validation.py
+    deps:
+      - artifacts/data_ingestion/train.csv
+      - config/config.yaml
+      - config/schema.yaml
+      - src/crop_recommendation/components/data_validation.py
+      - src/crop_recommendation/config/config.py
+      - src/crop_recommendation/entity/entity.py
+    outs:
+      - artifacts/data_validation/status.txt
