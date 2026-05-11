@@ -1,0 +1,8 @@
+stages:
+  training:
+    cmd: python main.py
+    deps:
+      - src/
+      - data/
+    outs:
+      - models/
