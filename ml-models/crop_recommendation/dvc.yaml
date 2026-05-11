@@ -1,8 +1,15 @@
 stages:
-  training:
-    cmd: python main.py
+  data_ingestion:
+    cmd: PYTHONPATH=src python src/crop_recommendation/pipelines/pipeline_01_data_ingestion.py
+
     deps:
-      - src/
-      - data/
+      - config/config.yaml
+      - data/raw/Crop_recommendation.csv
+      - src/crop_recommendation/components/data_ingestion.py
+      - src/crop_recommendation/config/config.py
+      - src/crop_recommendation/entity/entity.py
+
     outs:
-      - models/
+      - artifacts/data_ingestion/raw.csv
+      - artifacts/data_ingestion/train.csv
+      - artifacts/data_ingestion/test.csv

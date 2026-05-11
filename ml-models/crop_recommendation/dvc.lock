@@ -1,0 +1,39 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: PYTHONPATH=src python 
+      src/crop_recommendation/pipelines/pipeline_01_data_ingestion.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 81d630a518a5431cf9b6f044a4c8f7b8
+      size: 264
+    - path: data/raw/Crop_recommendation.csv
+      hash: md5
+      md5: 5e743dd4cf49f84d23a904cd51c9b5b8
+      size: 150034
+    - path: src/crop_recommendation/components/data_ingestion.py
+      hash: md5
+      md5: 88795cfe51fa143b410e4d4c18f782fd
+      size: 2540
+    - path: src/crop_recommendation/config/config.py
+      hash: md5
+      md5: 8c27b7b3ceeb781b6f5f37d18d1e2ab3
+      size: 1212
+    - path: src/crop_recommendation/entity/entity.py
+      hash: md5
+      md5: 54da67c8866da172ad32f053b035c348
+      size: 226
+    outs:
+    - path: artifacts/data_ingestion/raw.csv
+      hash: md5
+      md5: 2e81cfd2e833e7baacd25812ae84488a
+      size: 147817
+    - path: artifacts/data_ingestion/test.csv
+      hash: md5
+      md5: 7da7577b2478f3a81ed1cfc1f40602ff
+      size: 29683
+    - path: artifacts/data_ingestion/train.csv
+      hash: md5
+      md5: 720b2955bd37b8cb8b6d639ce32ab9fa
+      size: 118179
