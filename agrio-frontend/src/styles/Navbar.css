@@ -1,0 +1,148 @@
+/* ── Variables ─────────────────────────────────────────── */
+:root {
+  --green:       #2d6a4f;
+  --green-dark:  #1b4332;
+  --green-light: #e8f5ee;
+  --bg:          #f5f2eb;
+  --bg-active:   #ede9df;
+  --text-muted:  #555;
+  --radius-icon: 12px;
+  --radius-btn:  8px;
+}
+
+/* ── Wrapper ────────────────────────────────────────────── */
+.navbar-wrap {
+  background: var(--bg);
+  padding: 10px 0;
+}
+
+/* ── Nav bar ────────────────────────────────────────────── */
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* ── Logo ───────────────────────────────────────────────── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: default;
+}
+
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-icon);
+  background: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green-dark);
+  letter-spacing: -0.4px;
+}
+
+.logo-ai {
+  color: var(--green);
+  font-weight: 400;
+}
+
+/* ── Nav links ──────────────────────────────────────────── */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-btn {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 7px 18px 12px;
+  border-radius: var(--radius-btn);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  font-family: inherit;
+  transition: background 0.13s, color 0.13s;
+}
+
+.nav-btn:hover {
+  background: var(--bg-active);
+  color: var(--green);
+}
+
+.nav-btn.active {
+  background: var(--bg-active);
+  color: var(--green);
+}
+
+.nav-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 2.5px;
+  border-radius: 2px;
+  background: var(--green);
+}
+
+/* ── Auth buttons ───────────────────────────────────────── */
+.auth-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-signin {
+  background: none;
+  border: 1.5px solid var(--green);
+  color: var(--green);
+  padding: 7px 20px;
+  border-radius: var(--radius-btn);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.13s;
+}
+
+.btn-signin:hover {
+  background: var(--green-light);
+}
+
+.btn-signup {
+  background: var(--green);
+  border: none;
+  color: #ffffff;
+  padding: 8px 20px;
+  border-radius: var(--radius-btn);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.13s;
+}
+
+.btn-signup:hover {
+  background: var(--green-dark);
+}
