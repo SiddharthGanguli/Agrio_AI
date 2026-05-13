@@ -7,6 +7,17 @@ import {
 import Login from "./pages/Login";
 import Navbar from "./pages/Navbar";
 import Footer from "./pages/Footer";
+import Dashboard from "./pages/Dashboard";
+
+function Home() {
+  return (
+    <>
+      <Navbar />
+      <Dashboard />
+      <Footer />
+    </>
+  );
+}
 
 function App() {
   return (
@@ -19,15 +30,9 @@ function App() {
         />
 
         <Route
-          path="/navbar"
-          element={<Navbar />}
+          path="/home"
+          element={<Home />}
         />
-
-      <Route
-          path="/footer"
-          element={<Footer />}
-        />
-
 
       </Routes>
     </BrowserRouter>
