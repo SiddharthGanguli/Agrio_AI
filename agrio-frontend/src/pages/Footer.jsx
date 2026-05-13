@@ -1,125 +1,65 @@
-// Footer.jsx
-
 import React from "react";
-
 import "./../styles/Footer.css";
 
+/* ── All links — edit here only ── */
+const FOOTER_LINKS = [
+  {
+    heading: "PRODUCT",
+    links: [
+      { label: "Crop Recommendation", href: "#features" },
+      { label: "Yield Prediction",    href: "#features" },
+      { label: "Disease Detection",   href: "#features" },
+    ],
+  },
+  {
+    heading: "ABOUT",
+    links: [
+      { label: "About Us", href: "#about"   },
+      { label: "Blog",     href: "#"        },
+      { label: "Contact",  href: "#"        },
+    ],
+  },
+  {
+    heading: "LEGAL",
+    links: [
+      { label: "Privacy Policy",   href: "#" },
+      { label: "Terms of Service", href: "#" },
+    ],
+  },
+];
+
 function Footer() {
-
   return (
-
     <footer className="footer">
-
       <div className="footer-top">
 
-        {/* Brand Section */}
-
+        {/* Brand */}
         <div className="footer-brand">
-
-          <h2>
-            Agrio.ai
-          </h2>
-
-          <p>
-            Empowering farmers with
-            intelligent, data-driven insights
-            for every season.
-          </p>
-
+          <h2>Agrio<span className="footer-ai">.ai</span></h2>
+          <p>Empowering farmers with intelligent, data-driven insights for every season.</p>
           <div className="footer-line"></div>
-
         </div>
 
-        {/* Links */}
-
+        {/* Links — rendered from data */}
         <div className="footer-links">
-
-          {/* Product */}
-
-          <div className="footer-column">
-
-            <h3>
-              PRODUCT
-            </h3>
-
-            <a href="">
-              Crop Recommendation
-            </a>
-
-            <a href="">
-              Yield Prediction
-            </a>
-
-            <a href="">
-              Disease Detection
-            </a>
-
-      
-
-          </div>
-
-          {/* About */}
-
-          <div className="footer-column">
-
-            <h3>
-              ABOUT
-            </h3>
-
-            <a href="">
-              About Us
-            </a>
-
-            <a href="">
-              Blog
-            </a>
-
-      
-
-            <a href="">
-              Contact
-            </a>
-
-          </div>
-
-          {/* Legal */}
-
-          <div className="footer-column">
-
-            <h3>
-              LEGAL
-            </h3>
-
-            <a href="">
-              Privacy Policy
-            </a>
-
-            <a href="">
-              Terms of Service
-            </a>
-
-          </div>
-
+          {FOOTER_LINKS.map((col) => (
+            <div className="footer-column" key={col.heading}>
+              <h3>{col.heading}</h3>
+              {col.links.map((l) => (
+                <a href={l.href} key={l.label}>{l.label}</a>
+              ))}
+            </div>
+          ))}
         </div>
 
       </div>
 
       {/* Bottom */}
-
       <div className="footer-bottom">
-
-        <p>
-          © 2026 Agrio.ai — All rights reserved.
-        </p>
-
-        <p>
-          Crafted with care for the farming community 🌱
-        </p>
-
+        <p>© {new Date().getFullYear()} Agrio.ai — All rights reserved.</p>
+        <p>Crafted with care for the farming community 🌱</p>
       </div>
-
     </footer>
-
   );
 }
 
