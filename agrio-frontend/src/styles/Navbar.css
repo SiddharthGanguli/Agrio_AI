@@ -1,165 +1,206 @@
-/* ── Variables ─────────────────────────────────────────── */
-:root {
-  --green:       #2d6a4f;
-  --green-dark:  #1b4332;
-  --green-light: #e8f5ee;
-  --bg:          #f5f2eb;
-  --bg-active:   #ede9df;
-  --text-muted:  #555;
-  --radius-icon: 12px;
-  --radius-btn:  8px;
-}
+/* Navbar.css */
 
-/* ── Wrapper ────────────────────────────────────────────── */
 .navbar-wrap {
-  background: var(--bg);
-  padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    transition: background 0.3s, box-shadow 0.3s, border-color 0.3s;
 }
 
-/* ── Nav bar ────────────────────────────────────────────── */
+.navbar-wrap.scrolled {
+    background: rgba(9, 15, 10, 0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(163, 230, 53, 0.15);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
 .navbar {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 32px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-family: 'Segoe UI', system-ui, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw;
+    height: 64px;
 }
 
-/* ── Logo ───────────────────────────────────────────────── */
+/* ── Logo ── */
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: default;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
 }
 
 .logo-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-icon);
-  background: var(--green);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background: rgba(163, 230, 53, 0.15);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo-text {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--green-dark);
-  letter-spacing: -0.4px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #edfbee;
 }
 
-.logo-ai {
-  color: var(--green);
-  font-weight: 400;
-}
+.logo-ai { color: #a3e635; }
 
-/* ── Nav links ──────────────────────────────────────────── */
+/* ── Desktop Nav Links ── */
 .nav-links {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+    display: flex;
+    list-style: none;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-btn {
-  position: relative;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 7px 18px 12px;
-  border-radius: var(--radius-btn);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-muted);
-  font-family: inherit;
-  transition: background 0.13s, color 0.13s;
+    display: inline-block;
+    padding: 0.42rem 0.9rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    border-radius: 100px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s;
 }
 
-.nav-btn:hover {
-  background: var(--bg-active);
-  color: var(--green);
-}
-
+.nav-btn:hover,
 .nav-btn.active {
-  background: var(--bg-active);
-  color: var(--green);
+    color: #edfbee;
+    background: rgba(163, 230, 53, 0.1);
 }
 
-.nav-btn.active::after {
-  content: "";
-  position: absolute;
-  bottom: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 18px;
-  height: 2.5px;
-  border-radius: 2px;
-  background: var(--green);
-}
-
-/* ── Auth buttons ───────────────────────────────────────── */
+/* ── Auth Buttons ── */
 .auth-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .btn-signin {
-  background: none;
-  border: 1.5px solid var(--green);
-  color: var(--green);
-  padding: 7px 20px;
-  border-radius: var(--radius-btn);
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  font-family: inherit;
-  transition: background 0.13s;
+    background: none;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    color: #edfbee;
+    padding: 0.45rem 1.1rem;
+    border-radius: 100px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
 }
 
 .btn-signin:hover {
-  background: var(--green-light);
+    border-color: #a3e635;
+    background: rgba(163, 230, 53, 0.07);
 }
 
 .btn-signup {
-  background: var(--green);
-  border: none;
-  color: #ffffff;
-  padding: 8px 20px;
-  border-radius: var(--radius-btn);
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: inherit;
-  transition: background 0.13s;
+    background: #a3e635;
+    color: #060e08;
+    border: none;
+    padding: 0.45rem 1.2rem;
+    border-radius: 100px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
 }
 
 .btn-signup:hover {
-  background: var(--green-dark);
+    background: #c4f540;
+    transform: translateY(-2px);
 }
 
-/* Blur + darken navbar on scroll */
-.navbar-wrap.scrolled {
-  background: rgba(9, 15, 10, 0.85);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(163, 230, 53, 0.15);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+/* ── Hamburger — hidden on desktop ── */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
 }
 
-/* Make nav-btn work as a link too */
-.nav-btn {
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  background: none;
-  border: none;
+.hamburger span {
+    display: block;
+    height: 2px;
+    background: #edfbee;
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* animate to X when open */
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobile Dropdown ── */
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: rgba(9, 15, 10, 0.97);
+    border-bottom: 1px solid rgba(163, 230, 53, 0.12);
+    padding: 0 5vw;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.3s;
+}
+
+.mobile-menu--open {
+    max-height: 400px;
+    padding: 16px 5vw 20px;
+}
+
+.mobile-link {
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: color 0.2s;
+}
+
+.mobile-link:last-of-type { border-bottom: none; }
+
+.mobile-link.active,
+.mobile-link:hover { color: #a3e635; }
+
+.mobile-auth {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.mobile-auth .btn-signin,
+.mobile-auth .btn-signup { flex: 1; text-align: center; }
+
+/* ══════════════════════════
+   RESPONSIVE
+══════════════════════════ */
+
+/* Tablet — hide auth, show hamburger */
+@media (max-width: 768px) {
+    .nav-links  { display: none; }
+    .auth-group { display: none; }
+    .hamburger  { display: flex; }
+    .mobile-menu { display: flex; }
+}
+
+/* Mobile — tighter padding */
+@media (max-width: 480px) {
+    .navbar      { padding: 0 1.2rem; height: 58px; }
+    .logo-text   { font-size: 1.05rem; }
 }
