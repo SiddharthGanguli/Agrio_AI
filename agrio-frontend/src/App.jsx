@@ -1,27 +1,23 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
+// App.jsx
 
-import Login from "./pages/Login";
-import Navbar from "./pages/Navbar";
-import Footer from "./pages/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Login from "./pages/login";
+
 import Dashboard from "./pages/Dashboard";
 
-function Home() {
-  return (
-    <>
-      <Navbar />
-      <Dashboard />
-      <Footer />
-    </>
-  );
-}
+import CropRecommendation from "./pages/CropRecommendation";
+
+import CropYieldPrediction from "./pages/CropYieldPrediction";
+
+import CropDiseasePrediction from "./pages/CropDiseasePrediction";
 
 function App() {
+
   return (
+
     <BrowserRouter>
+
       <Routes>
 
         <Route
@@ -30,12 +26,29 @@ function App() {
         />
 
         <Route
-          path="/home"
-          element={<Home />}
+          path="/dashboard"
+          element={<Dashboard />}
+        />
+
+        <Route
+          path="/crop-recommendation"
+          element={<CropRecommendation />}
+        />
+
+        <Route
+          path="/crop-yield"
+          element={<CropYieldPrediction />}
+        />
+
+        <Route
+          path="/crop-disease"
+          element={<CropDiseasePrediction />}
         />
 
       </Routes>
+
     </BrowserRouter>
+
   );
 }
 

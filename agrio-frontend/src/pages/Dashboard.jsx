@@ -1,100 +1,153 @@
-import '../styles/Dashboard.css';
-import AgrioImage from "../assets/Agrio.jpg";
+// Dashboard.jsx
 
-/* ── All content — edit here only ── */
-const FEATURES = [
-  { id: 1, icon: '🌱', title: 'Crop Recommendation Model',    desc: 'Get the best crop for your soil, climate, and season.'  },
-  { id: 2, icon: '📈', title: 'Crop Yield Prediction Model',  desc: 'Forecast harvest output and plan resources with ease.'   },
-  { id: 3, icon: '🔬', title: 'Crop Disease Detection Model', desc: 'Upload a leaf image and detect disease in seconds.'       },
-];
+import { useNavigate } from "react-router-dom";
 
-const CHAT_BUBBLES = [
-  { from: 'user', text: 'Which crop suits black soil in monsoon?'            },
-  { from: 'ai',   text: 'Soybean is ideal for your conditions 🌿'            },
-  { from: 'user', text: 'What yield can I expect for 2 acres?'               },
-  { from: 'ai',   text: 'Approximately 3.4 tonnes based on current data 📊'  },
-];
+import "./../styles/Dashboard.css";
 
-/* ── Hero ── */
-function Hero() {
+function Dashboard() {
+
+  const navigate = useNavigate();
+
   return (
-    <section className="hero">
-      <div className="hero-content">
-        {/* Left Side */}
-        <div className="hero-left">
-          <span className="badge">🌾 AI-Powered Agriculture</span>
+
+    <div className="dashboard-container">
+
+      {/* Intro Section */}
+
+      <div className="intro-section">
+
+        <div className="intro-left">
+
           <h1>
-            Farm Smarter.
-            <br />
-            <span className="accent">Harvest Better.</span>
+            AI Powered Agriculture 
+             <br />
+  Platform
           </h1>
-          <p className="hero-sub">
-            Three intelligent models to recommend crops, predict yield,
-            and detect disease — all in one platform.
+
+          <p>
+            Get crop recommendations,
+            yield predictions and crop
+            disease detection using
+            Machine Learning and AI.
           </p>
-          <div className="hero-btns">
-            <a href="#features" className="btn-primary">Explore Models</a>
-            <a href="#chat" className="btn-outline">Chat with AI</a>
+
+          <div className="intro-buttons">
+
+            <button className="start-btn">
+              Get Started
+            </button>
+
+            <button className="feature-btn">
+              View Features
+            </button>
+
           </div>
+
         </div>
 
-        {/* Right Side Image */}
-        <div className="hero-right">
-          <img src={AgrioImage} alt="Agriculture" />
+        <div className="intro-right">
+
+          <img
+            src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1200&auto=format&fit=crop"
+            alt="Agriculture"
+          />
+
         </div>
+
       </div>
-    </section>
-  );
-}
 
-/* ── Feature Cards ── */
-function Features() {
-  return (
-    <section className="features" id="features">
-      <p className="eyebrow">Our Models</p>
-      <h2>What Agrio AI Can Do</h2>
-      <div className="cards">
-        {FEATURES.map((f) => (
-          <div className="card" key={f.id}>
-            <span className="card-icon">{f.icon}</span>
-            <h3>{f.title}</h3>
-            <p>{f.desc}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
+      {/* ML Features */}
 
-/* ── Chat ── */
-function Chat() {
-  return (
-    <section className="chat" id="chat">
-      <p className="eyebrow">AI Assistant</p>
-      <h2>Ask Agrio AI Anything</h2>
-      <p className="chat-sub">Get instant answers on crops, soil, and diseases — 24/7.</p>
-      <div className="chat-window">
-        <div className="chat-bar">💬 Agrio AI Chat</div>
-        <div className="chat-msgs">
-          {CHAT_BUBBLES.map((b, i) => (
-            <div key={i} className={`bubble bubble-${b.from}`}>{b.text}</div>
-          ))}
+      <h1 className="feature-heading">
+        Our ML Features
+      </h1>
+
+      {/* Your Existing Cards */}
+
+      <div className="main-box">
+
+        <div
+          className="card"
+          onClick={() =>
+            navigate("/crop-recommendation")
+          }
+        >
+
+          <h2>Crop Recommendation</h2>
+
+          <p>
+            Get the best crop based on soil
+            nutrients and environmental
+            conditions.
+          </p>
+
+          <button>
+            Try Model
+          </button>
+
         </div>
-        <div className="chat-footer">
-          <button className="btn-primary chat-btn">Chat Now →</button>
-        </div>
-      </div>
-    </section>
-  );
-}
 
-/* ── Dashboard ── */
-export default function Dashboard() {
-  return (
-    <div className="dashboard">
-      <Hero />
-      <Features />
-      <Chat />
+        <div
+          className="card"
+          onClick={() =>
+            navigate("/crop-yield")
+          }
+        >
+
+          <h2>Crop Yield Prediction</h2>
+
+          <p>
+            Predict crop production using
+            historical and environmental
+            data.
+          </p>
+
+          <button>
+            Try Model
+          </button>
+
+        </div>
+
+        <div
+          className="card"
+          onClick={() =>
+            navigate("/crop-disease")
+          }
+        >
+
+          <h2>Crop Disease Prediction</h2>
+
+          <p>
+            Detect crop diseases using
+            image analysis and AI-based
+            prediction.
+          </p>
+
+          <button>
+            Try Model
+          </button>
+
+        </div>
+
+      </div>
+
+      {/* Ask Anything */}
+
+      <div className="chat-box">
+
+        <input
+          type="text"
+          placeholder="Ask anything..."
+        />
+
+        <button>
+          Ask
+        </button>
+
+      </div>
+
     </div>
   );
 }
+
+export default Dashboard;
