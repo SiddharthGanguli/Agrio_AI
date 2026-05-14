@@ -1,3 +1,35 @@
+
+body.light {
+  --bg: #f5f5ef;
+  --surface: #ffffff;
+  --border: rgba(0,0,0,0.08);
+  --lime: #6aaa1c;
+  --muted: #5f6b60;
+  --white: #111111;
+}
+
+body.light .hero {
+  background: radial-gradient(ellipse 60% 55% at 20% 40%, rgba(106,170,28,0.08), transparent 70%);
+}
+
+body.light .chat-window,
+body.light .card { box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
+
+body.light .bubble-ai  { background: #f2f5f1; }
+body.light .chat-bar   { background: #f7f7f7; }
+body.light .btn-outline { border: 1.5px solid rgba(0,0,0,0.12); }
+body.light .btn-outline:hover { background: rgba(106,170,28,0.08); }
+
+/* =========================
+   DARK MODE
+
+body.dark {
+  --bg: #090f0a;
+  --surface: #111a13;
+  --border: rgba(163, 230, 53, 0.15);
+  --lime: #a3e635;
+  --muted: #5a7a5e;
+  --white: #edfbee;
 /* Dashboard.css */
 
 .dashboard-container{
