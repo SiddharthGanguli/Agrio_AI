@@ -347,3 +347,8 @@ body.light .logo-icon {
     background: rgba(106,170,28,0.14);
     box-shadow: 0 4px 12px rgba(106,170,28,0.12);
 }
+.welcome-text{
+  color: #a3e635;
+  font-size: 15px;
+  font-weight: 600;
+}
