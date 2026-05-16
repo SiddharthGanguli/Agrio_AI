@@ -22,3 +22,8 @@ data_preprocessing:
   label_encoder_path: artifacts/data_preprocessing/label_encoder.pkl
   train_array_path: artifacts/data_preprocessing/train.npy
   test_array_path: artifacts/data_preprocessing/test.npy
+  preprocessed_data_dir: data/preprocessed
+  preprocessed_preprocessor_path: data/preprocessed/preprocessor.pkl
+  preprocessed_label_encoder_path: data/preprocessed/label_encoder.pkl
+  preprocessed_train_array_path: data/preprocessed/train.npy
+  preprocessed_test_array_path: data/preprocessed/test.npy

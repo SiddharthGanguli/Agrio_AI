@@ -65,5 +65,18 @@ class ConfigManager :
             preprocessor_path=Path(preprocessing["preprocessor_path"]),
             label_encoder_path=Path(preprocessing["label_encoder_path"]),
             train_array_path=Path(preprocessing["train_array_path"]),
-            test_array_path=Path(preprocessing["test_array_path"])
+            test_array_path=Path(preprocessing["test_array_path"]),
+            preprocessed_data_dir=Path(preprocessing["preprocessed_data_dir"]),
+            preprocessed_preprocessor_path=Path(
+                preprocessing["preprocessed_preprocessor_path"]
+            ),
+            preprocessed_label_encoder_path=Path(
+                preprocessing["preprocessed_label_encoder_path"]
+            ),
+            preprocessed_train_array_path=Path(
+                preprocessing["preprocessed_train_array_path"]
+            ),
+            preprocessed_test_array_path=Path(
+                preprocessing["preprocessed_test_array_path"]
+            )
         )

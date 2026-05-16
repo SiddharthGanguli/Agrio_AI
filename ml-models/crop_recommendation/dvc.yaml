@@ -42,3 +42,7 @@ stages:
       - artifacts/data_preprocessing/test.npy
       - artifacts/data_preprocessing/preprocessor.pkl
       - artifacts/data_preprocessing/label_encoder.pkl
+      - data/preprocessed/train.npy
+      - data/preprocessed/test.npy
+      - data/preprocessed/preprocessor.pkl
+      - data/preprocessed/label_encoder.pkl

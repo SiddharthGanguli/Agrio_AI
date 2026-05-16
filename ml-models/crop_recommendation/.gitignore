@@ -16,11 +16,12 @@ logs/
 
 data/raw/*
 data/processed/*
+data/preprocessed/*
 models/*
 
 # Keep structure
 !data/raw/*.dvc
 !data/raw/.gitkeep
 !data/processed/.gitkeep
+!data/preprocessed/.gitkeep
 !models/.gitkeep
-

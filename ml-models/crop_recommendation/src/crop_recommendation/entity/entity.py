@@ -26,3 +26,8 @@ class DataPreprocessingConfig:
     label_encoder_path: Path
     train_array_path: Path
     test_array_path: Path
+    preprocessed_data_dir: Path
+    preprocessed_preprocessor_path: Path
+    preprocessed_label_encoder_path: Path
+    preprocessed_train_array_path: Path
+    preprocessed_test_array_path: Path

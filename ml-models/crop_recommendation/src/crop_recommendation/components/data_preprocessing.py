@@ -58,8 +58,11 @@ class DataPreprocessing:
 
     def _save_preprocessors(self):
         self.config.root_dir.mkdir(parents=True, exist_ok=True)
+        self.config.preprocessed_data_dir.mkdir(parents=True, exist_ok=True)
         joblib.dump(self.pipeline, self.config.preprocessor_path)
         joblib.dump(self.encoder, self.config.label_encoder_path)
+        joblib.dump(self.pipeline, self.config.preprocessed_preprocessor_path)
+        joblib.dump(self.encoder, self.config.preprocessed_label_encoder_path)
         logger.info("Preprocessors saved successfully")
 
     def _save_arrays(self, X_train, y_train, X_test, y_test):
@@ -68,6 +71,8 @@ class DataPreprocessing:
 
         np.save(self.config.train_array_path, train_arr)
         np.save(self.config.test_array_path, test_arr)
+        np.save(self.config.preprocessed_train_array_path, train_arr)
+        np.save(self.config.preprocessed_test_array_path, test_arr)
         logger.info("Processed numpy arrays saved successfully")
 
     def run(self):
