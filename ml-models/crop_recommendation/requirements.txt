@@ -3,33 +3,13 @@ pandas
 scikit-learn
 pyyaml
 joblib
-
-
 fastapi
 uvicorn
-
-
-
-
-
 mlflow
-
-
-
 dvc
-
-
-
 docker
-
-
-
 boto3
 sagemaker
-
-
-
-
 
 
 

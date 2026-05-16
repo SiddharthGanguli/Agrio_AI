@@ -1,4 +1,4 @@
-from crop_recommendation.entity.entity import DataIngestionConfig,DataValidationConfig,DataPreprocessingConfig,ModelTrainingConfig
+from crop_recommendation.entity.entity import DataIngestionConfig,DataValidationConfig,DataPreprocessingConfig,ModelTrainingConfig,ModelEvaluationConfig
 from pathlib import Path   
 import yaml
 import os 
@@ -93,4 +93,20 @@ class ConfigManager :
             test_array_path=Path(training["test_array_path"]),
             model_path=Path(training["model_path"]),
             metrics_path=Path(training["metrics_path"])
+        )
+    
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        evaluation = self.config.get("model_evaluation")
+        if evaluation is None:raise ValueError("model_evaluation section missing")
+        
+        root_dir = Path(evaluation["root_dir"])
+        os.makedirs(root_dir,exist_ok=True)
+        
+        return ModelEvaluationConfig(
+            root_dir=root_dir,
+            model_path=Path(evaluation["model_path"]),
+            test_array_path=Path(evaluation["test_array_path"]),
+            metrics_file=Path(evaluation["metrics_file"]),
+            classification_report_file=Path(evaluation["classification_report_file"]),
+            confusion_matrix_file=Path(evaluation["confusion_matrix_file"])
         )

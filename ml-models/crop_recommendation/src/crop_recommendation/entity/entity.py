@@ -39,3 +39,12 @@ class ModelTrainingConfig:
     test_array_path: Path
     model_path: Path
     metrics_path: Path
+
+@dataclass
+class ModelEvaluationConfig:
+    root_dir: Path
+    model_path: Path
+    test_array_path: Path
+    metrics_file: Path
+    classification_report_file: Path
+    confusion_matrix_file: Path

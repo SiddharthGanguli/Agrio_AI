@@ -109,7 +109,7 @@ class ModelTraining:
         with open(self.config.metrics_path, "w") as f:
             json.dump(report, f, indent=4)
         logger.info(f"Metrics saved at {self.config.metrics_path}")
-
+   
     def run(self):
         logger.info("Model training started")
         train_arr, test_arr = self._load_arrays()
