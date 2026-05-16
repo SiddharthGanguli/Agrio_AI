@@ -1,4 +1,4 @@
-from crop_recommendation.entity.entity import DataIngestionConfig,DataValidationConfig
+from crop_recommendation.entity.entity import DataIngestionConfig,DataValidationConfig,DataPreprocessingConfig
 from pathlib import Path   
 import yaml
 import os 
@@ -47,4 +47,23 @@ class ConfigManager :
             validation_status_file=Path(validation["validation_status_file"]),
             train_dir=Path(validation["train_dir"]),
             schema_file=Path(validation["schema_file"]),
+        )
+    
+    def get_data_preprocessing_config(self) -> DataPreprocessingConfig:
+
+        preprocessing = self.config.get("data_preprocessing")
+        if preprocessing is None:
+            raise ValueError("data_preprocessing section missing")
+        
+        root_dir = Path(preprocessing["root_dir"])
+        os.makedirs(root_dir,exist_ok=True)
+
+        return DataPreprocessingConfig(
+            root_dir=root_dir,
+            train_dir=Path(preprocessing["train_dir"]),
+            test_dir=Path(preprocessing["test_dir"]),
+            preprocessor_path=Path(preprocessing["preprocessor_path"]),
+            label_encoder_path=Path(preprocessing["label_encoder_path"]),
+            train_array_path=Path(preprocessing["train_array_path"]),
+            test_array_path=Path(preprocessing["test_array_path"])
         )

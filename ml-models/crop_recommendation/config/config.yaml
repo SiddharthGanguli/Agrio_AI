@@ -13,3 +13,12 @@ data_validation:
   validation_status_file: artifacts/data_validation/status.txt
   train_dir: artifacts/data_ingestion/train.csv
   schema_file: config/schema.yaml
+
+data_preprocessing:
+  root_dir: artifacts/data_preprocessing
+  train_dir: artifacts/data_ingestion/train.csv
+  test_dir: artifacts/data_ingestion/test.csv
+  preprocessor_path: artifacts/data_preprocessing/preprocessor.pkl
+  label_encoder_path: artifacts/data_preprocessing/label_encoder.pkl
+  train_array_path: artifacts/data_preprocessing/train.npy
+  test_array_path: artifacts/data_preprocessing/test.npy

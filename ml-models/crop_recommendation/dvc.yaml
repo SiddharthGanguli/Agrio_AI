@@ -26,3 +26,19 @@ stages:
       - src/crop_recommendation/entity/entity.py
     outs:
       - artifacts/data_validation/status.txt
+
+  data_preprocessing:
+    cmd: PYTHONPATH=src python src/crop_recommendation/pipelines/pipeline-03-data_preprocessing.py
+
+    deps:
+      - src/crop_recommendation/components/data_preprocessing.py
+      - src/crop_recommendation/config/config.py
+      - src/crop_recommendation/entity/entity.py
+      - artifacts/data_ingestion/train.csv
+      - artifacts/data_ingestion/test.csv
+
+    outs:
+      - artifacts/data_preprocessing/train.npy
+      - artifacts/data_preprocessing/test.npy
+      - artifacts/data_preprocessing/preprocessor.pkl
+      - artifacts/data_preprocessing/label_encoder.pkl

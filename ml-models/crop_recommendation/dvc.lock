@@ -6,8 +6,8 @@ stages:
     deps:
     - path: config/config.yaml
       hash: md5
-      md5: ef575cd551e95f047495e847c0215a6c
-      size: 466
+      md5: abd5fd59763355f3ba7f230cdbc9541b
+      size: 875
     - path: data/raw/Crop_recommendation.csv
       hash: md5
       md5: 5e743dd4cf49f84d23a904cd51c9b5b8
@@ -18,12 +18,12 @@ stages:
       size: 2540
     - path: src/crop_recommendation/config/config.py
       hash: md5
-      md5: 7295efc92e9bc91b788699a7bf7fb285
-      size: 1832
+      md5: f25fe04573f45dc737827a6b992fa54b
+      size: 2677
     - path: src/crop_recommendation/entity/entity.py
       hash: md5
-      md5: 91f5d3c14fbdf0198c76101164ac58c9
-      size: 359
+      md5: 3f824d6fd085bd4a636559e0dc0c0e61
+      size: 571
     outs:
     - path: artifacts/data_ingestion/raw.csv
       hash: md5
@@ -47,8 +47,8 @@ stages:
       size: 118179
     - path: config/config.yaml
       hash: md5
-      md5: ef575cd551e95f047495e847c0215a6c
-      size: 466
+      md5: abd5fd59763355f3ba7f230cdbc9541b
+      size: 875
     - path: config/schema.yaml
       hash: md5
       md5: 58ac79dc7aac62f88404417fc11757af
@@ -59,14 +59,55 @@ stages:
       size: 1806
     - path: src/crop_recommendation/config/config.py
       hash: md5
-      md5: 7295efc92e9bc91b788699a7bf7fb285
-      size: 1832
+      md5: f25fe04573f45dc737827a6b992fa54b
+      size: 2677
     - path: src/crop_recommendation/entity/entity.py
       hash: md5
-      md5: 91f5d3c14fbdf0198c76101164ac58c9
-      size: 359
+      md5: 3f824d6fd085bd4a636559e0dc0c0e61
+      size: 571
     outs:
     - path: artifacts/data_validation/status.txt
       hash: md5
       md5: f827cf462f62848df37c5e1e94a4da74
       size: 4
+  data_preprocessing:
+    cmd: PYTHONPATH=src python 
+      src/crop_recommendation/pipelines/pipeline-03-data_preprocessing.py
+    deps:
+    - path: artifacts/data_ingestion/test.csv
+      hash: md5
+      md5: 7da7577b2478f3a81ed1cfc1f40602ff
+      size: 29683
+    - path: artifacts/data_ingestion/train.csv
+      hash: md5
+      md5: 720b2955bd37b8cb8b6d639ce32ab9fa
+      size: 118179
+    - path: src/crop_recommendation/components/data_preprocessing.py
+      hash: md5
+      md5: c2bc148454c12d6fb6edcd98e0d1e2cb
+      size: 3170
+    - path: src/crop_recommendation/config/config.py
+      hash: md5
+      md5: f25fe04573f45dc737827a6b992fa54b
+      size: 2677
+    - path: src/crop_recommendation/entity/entity.py
+      hash: md5
+      md5: 3f824d6fd085bd4a636559e0dc0c0e61
+      size: 571
+    outs:
+    - path: artifacts/data_preprocessing/label_encoder.pkl
+      hash: md5
+      md5: 4a8ca9653e3c7c5f807645ea18a13534
+      size: 830
+    - path: artifacts/data_preprocessing/preprocessor.pkl
+      hash: md5
+      md5: c56202c1caec37fd5df3078362eb1b5e
+      size: 1769
+    - path: artifacts/data_preprocessing/test.npy
+      hash: md5
+      md5: 95b3bc24c72cc1d03cfa3446e28388fb
+      size: 28288
+    - path: artifacts/data_preprocessing/train.npy
+      hash: md5
+      md5: 684b537a8d818cf6d0736b6c7a22b7d7
+      size: 112768
