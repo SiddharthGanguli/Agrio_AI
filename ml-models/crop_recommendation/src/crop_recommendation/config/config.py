@@ -1,4 +1,4 @@
-from crop_recommendation.entity.entity import DataIngestionConfig,DataValidationConfig,DataPreprocessingConfig
+from crop_recommendation.entity.entity import DataIngestionConfig,DataValidationConfig,DataPreprocessingConfig,ModelTrainingConfig
 from pathlib import Path   
 import yaml
 import os 
@@ -79,4 +79,18 @@ class ConfigManager :
             preprocessed_test_array_path=Path(
                 preprocessing["preprocessed_test_array_path"]
             )
+        )
+    def get_model_training_config(self) -> ModelTrainingConfig:
+        training = self.config.get("model_training")
+        if training is None:
+            raise ValueError("model_training section missing")
+        root_dir = Path(training["root_dir"])
+        os.makedirs(root_dir,exist_ok=True)
+
+        return ModelTrainingConfig(
+            root_dir=root_dir,
+            train_array_path=Path(training["train_array_path"]),
+            test_array_path=Path(training["test_array_path"]),
+            model_path=Path(training["model_path"]),
+            metrics_path=Path(training["metrics_path"])
         )

@@ -27,3 +27,10 @@ data_preprocessing:
   preprocessed_label_encoder_path: data/preprocessed/label_encoder.pkl
   preprocessed_train_array_path: data/preprocessed/train.npy
   preprocessed_test_array_path: data/preprocessed/test.npy
+
+model_training:
+  root_dir: artifacts/model_training
+  train_array_path: artifacts/data_preprocessing/train.npy
+  test_array_path: artifacts/data_preprocessing/test.npy
+  model_path: artifacts/model_training/model.pkl
+  metrics_path: artifacts/model_training/metrics.json

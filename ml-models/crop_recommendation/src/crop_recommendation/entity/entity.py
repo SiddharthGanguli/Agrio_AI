@@ -31,3 +31,11 @@ class DataPreprocessingConfig:
     preprocessed_label_encoder_path: Path
     preprocessed_train_array_path: Path
     preprocessed_test_array_path: Path
+
+@dataclass
+class ModelTrainingConfig:
+    root_dir: Path
+    train_array_path: Path
+    test_array_path: Path
+    model_path: Path
+    metrics_path: Path

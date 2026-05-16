@@ -46,3 +46,17 @@ stages:
       - data/preprocessed/test.npy
       - data/preprocessed/preprocessor.pkl
       - data/preprocessed/label_encoder.pkl
+
+  model_training:
+    cmd: PYTHONPATH=src python src/crop_recommendation/pipelines/pipeline-04-model_training.py
+    deps:
+      - config/config.yaml
+      - artifacts/data_preprocessing/train.npy
+      - artifacts/data_preprocessing/test.npy
+      - src/crop_recommendation/components/model_training.py
+      - src/crop_recommendation/pipelines/pipeline-04-model_training.py
+      - src/crop_recommendation/config/config.py
+      - src/crop_recommendation/entity/entity.py
+    outs:
+      - artifacts/model_training/model.pkl
+      - artifacts/model_training/metrics.json

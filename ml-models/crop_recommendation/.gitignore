@@ -9,6 +9,7 @@ env/
 
 artifacts/
 logs/
+mlruns/
 
 .ipynb_checkpoints/
 .env
