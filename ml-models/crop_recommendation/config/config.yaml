@@ -1,0 +1,44 @@
+artifacts_dir : artifacts
+
+data_ingestion :
+  root_dir : artifacts/data_ingestion
+  source_dir : data/raw/Crop_recommendation.csv
+  train_dir : artifacts/data_ingestion/train.csv
+  test_dir : artifacts/data_ingestion/test.csv
+  test_size : 0.2
+  random_state : 42
+  
+data_validation:
+  root_dir: artifacts/data_validation
+  validation_status_file: artifacts/data_validation/status.txt
+  train_dir: artifacts/data_ingestion/train.csv
+  schema_file: config/schema.yaml
+
+data_preprocessing:
+  root_dir: artifacts/data_preprocessing
+  train_dir: artifacts/data_ingestion/train.csv
+  test_dir: artifacts/data_ingestion/test.csv
+  preprocessor_path: artifacts/data_preprocessing/preprocessor.pkl
+  label_encoder_path: artifacts/data_preprocessing/label_encoder.pkl
+  train_array_path: artifacts/data_preprocessing/train.npy
+  test_array_path: artifacts/data_preprocessing/test.npy
+  preprocessed_data_dir: data/preprocessed
+  preprocessed_preprocessor_path: data/preprocessed/preprocessor.pkl
+  preprocessed_label_encoder_path: data/preprocessed/label_encoder.pkl
+  preprocessed_train_array_path: data/preprocessed/train.npy
+  preprocessed_test_array_path: data/preprocessed/test.npy
+
+model_training:
+  root_dir: artifacts/model_training
+  train_array_path: artifacts/data_preprocessing/train.npy
+  test_array_path: artifacts/data_preprocessing/test.npy
+  model_path: artifacts/model_training/model.pkl
+  metrics_path: artifacts/model_training/metrics.json
+
+model_evaluation:
+  root_dir: artifacts/model_evaluation
+  model_path: artifacts/model_training/model.pkl
+  test_array_path: artifacts/data_preprocessing/test.npy
+  metrics_file: artifacts/model_evaluation/metrics.json
+  classification_report_file: artifacts/model_evaluation/classification_report.txt
+  confusion_matrix_file: artifacts/model_evaluation/confusion_matrix.png
