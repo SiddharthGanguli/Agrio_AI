@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Navbar from "./pages/Navbar";
 import Footer from "./pages/Footer";
 import Dashboard from "./pages/Dashboard";
+import About from "./pages/About";
 
 function Home() {
 
@@ -49,6 +50,17 @@ function App() {
         <Route
           path="/login"
           element={<Login />}
+        />
+
+        <Route
+          path="/about"
+          element={
+            <>
+              <Navbar />
+              <About />
+              <Footer />
+            </>
+          }
         />
 
       </Routes>
