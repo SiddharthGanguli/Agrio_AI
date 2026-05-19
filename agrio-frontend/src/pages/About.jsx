@@ -2,6 +2,16 @@ import "../styles/About.css";
 
 import AgrioImage from "../assets/Agrio.jpg";
 
+import {
+  FaChartLine,
+  FaFlask,
+  FaImage,
+  FaMicroscope,
+  FaRegCommentDots,
+  FaRobot,
+  FaSeedling,
+} from "react-icons/fa";
+
 function About() {
 
   return (
@@ -142,33 +152,49 @@ function About() {
 
         <div className="workflow-flow">
 
-          <div className="flow-box">
+          <div className="flow-box query-box">
 
-            <h3>User Query</h3>
+            <div className="flow-icon">
+              <FaRegCommentDots />
+            </div>
 
-            <p>
-              text prompt or image upload
-            </p>
+            <div>
+              <h3>User Query</h3>
+
+              <p>
+                text prompt or image upload
+              </p>
+            </div>
 
           </div>
 
-          <div className="flow-line"></div>
+          <div className="flow-line vertical-line"></div>
 
           <div className="flow-box active-box">
 
-            <h3>AI Chatbot</h3>
+            <div className="flow-icon">
+              <FaRobot />
+            </div>
 
-            <p>
-              intent classifier → routes to model
-            </p>
+            <div>
+              <h3>AI Chatbot</h3>
+
+              <p>
+                intent classifier → routes to model
+              </p>
+            </div>
 
           </div>
 
-          {/* MODEL CARDS */}
+          <div className="branch-line top-branch"></div>
 
           <div className="model-row">
 
             <div className="model-card">
+
+              <div className="model-card-icon crop-icon">
+                <FaSeedling />
+              </div>
 
               <h3>
                 Crop Recommendation
@@ -178,15 +204,13 @@ function About() {
                 soil params
               </span>
 
-              <div className="result-box">
-
-                "Grow rice — optimal match 94%"
-
-              </div>
-
             </div>
 
             <div className="model-card">
+
+              <div className="model-card-icon yield-icon">
+                <FaChartLine />
+              </div>
 
               <h3>
                 Yield Prediction
@@ -196,15 +220,13 @@ function About() {
                 season + region
               </span>
 
-              <div className="result-box">
-
-                "Expected yield: 3.2 t/ha"
-
-              </div>
-
             </div>
 
             <div className="model-card">
+
+              <div className="model-card-icon disease-icon">
+                <FaMicroscope />
+              </div>
 
               <h3>
                 Disease Detection
@@ -214,27 +236,49 @@ function About() {
                 plant image
               </span>
 
-              <div className="result-box">
+            </div>
 
-                "Leaf blight detected"
+          </div>
 
-              </div>
+          <div className="result-row">
+
+            <div className="result-box">
+
+              "Grow rice — optimal match 94%"
+
+            </div>
+
+            <div className="result-box">
+
+              "Expected yield: 3.2 t/ha"
+
+            </div>
+
+            <div className="result-box">
+
+              "Leaf blight detected — apply fungicide"
 
             </div>
 
           </div>
 
-          <div className="flow-line"></div>
+          <div className="branch-line bottom-branch"></div>
 
           <div className="flow-box response-box">
 
-            <h3>
-              Response to User
-            </h3>
+            <div className="flow-icon">
+              <FaRegCommentDots />
+            </div>
 
-            <p>
-              prediction + explanation in plain language
-            </p>
+            <div>
+              <h3>
+                Response to User
+              </h3>
+
+              <p>
+                prediction + explanation in plain language
+              </p>
+            </div>
 
           </div>
 
@@ -245,6 +289,8 @@ function About() {
         <div className="example-row">
 
           <div className="example-card">
+
+            <FaFlask className="example-icon" />
 
             <p>
               "My soil has N=34, P=23, K=45,
@@ -259,6 +305,8 @@ function About() {
 
           <div className="example-card">
 
+            <FaChartLine className="example-icon" />
+
             <p>
               "What yield can I expect for maize
               in Kharif season?"
@@ -271,6 +319,8 @@ function About() {
           </div>
 
           <div className="example-card">
+
+            <FaImage className="example-icon" />
 
             <p>
               "My tomato leaves have yellow spots."
