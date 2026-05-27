@@ -10,6 +10,10 @@ import Footer from "./pages/Footer";
 import Dashboard from "./pages/Dashboard";
 import About from "./pages/About";
 
+/* NEW IMPORT */
+import CropRecommendation from "./pages/CropRecommendation";
+
+
 function Home() {
 
   return (
@@ -31,26 +35,28 @@ function App() {
 
       <Routes>
 
-        {/* Home Page */}
+        {/* ================= HOME PAGE ================= */}
 
         <Route
           path="/"
           element={<Home />}
         />
 
-        {/* Extra Home Route */}
-
         <Route
           path="/home"
           element={<Home />}
         />
 
-        {/* Login Page */}
+
+        {/* ================= LOGIN PAGE ================= */}
 
         <Route
           path="/login"
           element={<Login />}
         />
+
+
+        {/* ================= ABOUT PAGE ================= */}
 
         <Route
           path="/about"
@@ -58,6 +64,20 @@ function App() {
             <>
               <Navbar />
               <About />
+              <Footer />
+            </>
+          }
+        />
+
+
+        {/* ================= CROP RECOMMENDATION PAGE ================= */}
+
+        <Route
+          path="/crop-recommendation"
+          element={
+            <>
+              <Navbar />
+              <CropRecommendation />
               <Footer />
             </>
           }

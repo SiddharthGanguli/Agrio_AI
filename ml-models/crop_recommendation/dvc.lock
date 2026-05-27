@@ -145,8 +145,8 @@ stages:
       size: 1826
     - path: src/crop_recommendation/components/model_training.py
       hash: md5
-      md5: 175d18c780696e9b23efa21a116f6fec
-      size: 4801
+      md5: f46249c1dcada042a854a01a9ffa28a0
+      size: 6945
     - path: src/crop_recommendation/config/config.py
       hash: md5
       md5: b21b512b86e0d25880f993e38eb7e4f5

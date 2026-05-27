@@ -2,19 +2,19 @@ import { useState, useEffect } from "react";
 
 import { FaMoon, FaSun } from "react-icons/fa";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import "../styles/Navbar.css";
 
 const links = [
 
-  { id: "home", label: "Home", href: "#home" },
+  { id: "home", label: "Home" },
 
-  { id: "features", label: "Models", href: "#features" },
+  { id: "features", label: "Models" },
 
-  { id: "chat", label: "Chat", href: "#chat" },
+  { id: "chat", label: "Chat" },
 
-  { id: "about", label: "About", href: "#about" },
+  { id: "about", label: "About" },
 
 ];
 
@@ -29,6 +29,8 @@ export default function Navbar() {
   const [darkMode, setDarkMode] = useState(true);
 
   const navigate = useNavigate();
+
+  const location = useLocation();
 
   const user = JSON.parse(
     localStorage.getItem("user")
@@ -65,6 +67,56 @@ export default function Navbar() {
 
     setMenuOpen(false);
 
+    // ABOUT PAGE
+
+    if (id === "about") {
+
+      navigate("/about");
+
+      return;
+    }
+
+    // HOME PAGE
+
+    if (id === "home") {
+
+      navigate("/");
+
+      return;
+    }
+
+    // SCROLL SECTIONS
+
+    if (location.pathname === "/") {
+
+      const section =
+        document.getElementById(id);
+
+      if (section) {
+
+        section.scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+
+    } else {
+
+      navigate("/");
+
+      setTimeout(() => {
+
+        const section =
+          document.getElementById(id);
+
+        if (section) {
+
+          section.scrollIntoView({
+            behavior: "smooth",
+          });
+        }
+
+      }, 300);
+    }
   };
 
   return (
@@ -128,8 +180,7 @@ export default function Navbar() {
 
               <li key={link.id}>
 
-                <a
-                  href={link.href}
+                <button
                   onClick={() =>
                     handleLink(link.id)
                   }
@@ -142,7 +193,7 @@ export default function Navbar() {
 
                   {link.label}
 
-                </a>
+                </button>
 
               </li>
 

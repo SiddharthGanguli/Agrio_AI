@@ -169,3 +169,28 @@
     .footer           { padding: 24px 14px 12px; }
     .footer-brand h2  { font-size: 20px; }
 }
+.footer-link-btn {
+
+  background: none;
+
+  border: none;
+
+  color: inherit;
+
+  cursor: pointer;
+
+  padding: 0;
+
+  margin: 6px 0;
+
+  text-align: left;
+
+  font-size: 15px;
+
+}
+
+.footer-link-btn:hover {
+
+  opacity: 0.8;
+
+}
