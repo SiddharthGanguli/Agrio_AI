@@ -1,0 +1,82 @@
+stages:
+  data_ingestion:
+    cmd: PYTHONPATH=src python src/crop_recommendation/pipelines/pipeline_01_data_ingestion.py
+
+    deps:
+      - config/config.yaml
+      - data/raw/Crop_recommendation.csv
+      - src/crop_recommendation/components/data_ingestion.py
+      - src/crop_recommendation/config/config.py
+      - src/crop_recommendation/entity/entity.py
+
+    outs:
+      - artifacts/data_ingestion/raw.csv
+      - artifacts/data_ingestion/train.csv
+      - artifacts/data_ingestion/test.csv
+
+
+  data_validation:
+    cmd: PYTHONPATH=src python src/crop_recommendation/pipelines/pipeline_02_data_validation.py
+    deps:
+      - artifacts/data_ingestion/train.csv
+      - config/config.yaml
+      - config/schema.yaml
+      - src/crop_recommendation/components/data_validation.py
+      - src/crop_recommendation/config/config.py
+      - src/crop_recommendation/entity/entity.py
+    outs:
+      - artifacts/data_validation/status.txt
+
+  data_preprocessing:
+    cmd: PYTHONPATH=src python src/crop_recommendation/pipelines/pipeline-03-data_preprocessing.py
+
+    deps:
+      - src/crop_recommendation/components/data_preprocessing.py
+      - src/crop_recommendation/config/config.py
+      - src/crop_recommendation/entity/entity.py
+      - artifacts/data_ingestion/train.csv
+      - artifacts/data_ingestion/test.csv
+
+    outs:
+      - artifacts/data_preprocessing/train.npy
+      - artifacts/data_preprocessing/test.npy
+      - artifacts/data_preprocessing/preprocessor.pkl
+      - artifacts/data_preprocessing/label_encoder.pkl
+      - data/preprocessed/train.npy
+      - data/preprocessed/test.npy
+      - data/preprocessed/preprocessor.pkl
+      - data/preprocessed/label_encoder.pkl
+
+  model_training:
+    cmd: PYTHONPATH=src python src/crop_recommendation/pipelines/pipeline-04-model_training.py
+    deps:
+      - config/config.yaml
+      - artifacts/data_preprocessing/train.npy
+      - artifacts/data_preprocessing/test.npy
+      - src/crop_recommendation/components/model_training.py
+      - src/crop_recommendation/pipelines/pipeline-04-model_training.py
+      - src/crop_recommendation/config/config.py
+      - src/crop_recommendation/entity/entity.py
+    outs:
+      - artifacts/model_training/model.pkl
+      - artifacts/model_training/metrics.json
+
+
+  model_evaluation:
+    cmd: PYTHONPATH=src python src/crop_recommendation/pipelines/pipeline-05-model_evaluation.py
+
+    deps:
+      - config/config.yaml
+      - artifacts/model_training/model.pkl
+      - artifacts/data_preprocessing/test.npy
+      - src/crop_recommendation/components/model_evaluation.py
+      - src/crop_recommendation/pipelines/pipeline-05-model_evaluation.py
+      - src/crop_recommendation/config/config.py
+      - src/crop_recommendation/entity/entity.py
+
+    outs:
+      - artifacts/model_evaluation/confusion_matrix.png
+      - artifacts/model_evaluation/classification_report.txt
+
+    metrics:
+      - artifacts/model_evaluation/metrics.json
